@@ -1,9 +1,11 @@
 import React from 'react';
 import InputField from './Components/InputField';
 import Title from './Components/Title';
+import Question from './Components/Question';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 
 const useStyles = makeStyles({
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function PreparingPage(props) {
+function PreparingPage(props) {
 
     const classes = useStyles();
 
@@ -27,6 +29,7 @@ export default function PreparingPage(props) {
         <div>
             <Title value = "Voting System" />
             <InputField />
+            <Question question = {props.question} />
             <div className = "text-center absolute inset-x-0 bottom-0 mb-8">
                 <Link to = '\vote'>
                     <Button className={classes.root}>Vote</Button>
@@ -35,3 +38,12 @@ export default function PreparingPage(props) {
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        options: state.options.options,
+        question: state.question.question
+    }
+}
+
+export default connect(mapStateToProps)(PreparingPage);
