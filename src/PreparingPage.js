@@ -2,6 +2,7 @@ import React from 'react';
 import InputField from './Components/InputField';
 import Title from './Components/Title';
 import Question from './Components/Question';
+import ListOption from './Components/ListOption';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
@@ -29,9 +30,16 @@ function PreparingPage(props) {
         <div>
             <Title value = "Voting System" />
             <InputField />
-            <Question question = {props.question} />
+            <div className = "flex">
+                <div className = "flex-1">
+                    <Question question = {props.question} />
+                </div>
+                <div className = "flex-1">
+                    <ListOption option = {props.option} />
+                </div>
+            </div>
             <div className = "text-center absolute inset-x-0 bottom-0 mb-8">
-                <Link to = '\vote'>
+                <Link to = '/vote'>
                     <Button className={classes.root}>Vote</Button>
                 </Link>
             </div>
@@ -41,7 +49,7 @@ function PreparingPage(props) {
 
 const mapStateToProps = (state) => {
     return {
-        options: state.options.options,
+        option: state.options.options,
         question: state.question.question
     }
 }

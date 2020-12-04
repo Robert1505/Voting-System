@@ -51,11 +51,11 @@ function InputField(props) {
             </div>
             <div className = "flex-1 text-center">
                 <form className={classes.root} noValidate autoComplete="off">
-                    <TextField borderColor="primary.main" className = {classes.textfield} id="outlined-basic" label="Add an option" variant="outlined" />
+                    <TextField onChange={e => setOption(e.target.value)} value = {option} borderColor="primary.main" className = {classes.textfield} id="outlined-basic" label="Add an option" variant="outlined" />
                 </form>
             </div>
             <div className = "flex-1 text-center mt-4">
-                <Button className={classes.button}>Add option</Button>
+                <Button onClick = {() => props.addOption(option, uuidv4())} className={classes.button}>Add option</Button>
             </div>
         </div>
     )
