@@ -1,10 +1,11 @@
 import React from 'react';
-import Title from './Components/Title';
-import ListVote from './Components/VotePage/ListVote';
-import {connect} from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import {getLatestQuestion} from './actions';
-
+import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Title from './Components/Title';
+import {connect} from 'react-redux';
+import {resetState} from './actions';
+import Chart from './Components/Results/Chart';
 
 const useStyles = makeStyles({
     root: {
@@ -18,18 +19,18 @@ const useStyles = makeStyles({
     },
 });
 
-function VotePage(props) {
-
-    React.useEffect(() => {
-        props.getLatestQuestion();
-    }, [])
+function Results(props) {
 
     const classes = useStyles();
-    console.log("p", props.question);
+
     return (
         <div>
-            <Title value = {props.question}/>
-            <ListVote options = {props.option} />
+            <Title value = "Results" />
+            
+            <div className = "mb-32">
+                <Title value = {props.question} />
+            </div>
+            <Chart />
         </div>
     )
 }
@@ -42,5 +43,7 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    getLatestQuestion
-})(VotePage);
+    resetState
+})(Results);
+
+

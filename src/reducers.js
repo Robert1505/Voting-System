@@ -2,11 +2,10 @@ import {combineReducers} from 'redux';
 
 const INITIAL_STATE = {
     options:[],
-    question: []
+    question: ""
 };
 
 let newOptions;
-let newQuestion;
 
 export const optionReducer = (oldState = INITIAL_STATE, action) => {
     switch(action.type) {
@@ -21,13 +20,20 @@ export const optionReducer = (oldState = INITIAL_STATE, action) => {
                 options: [...newOptions]
             }
         case "ADD_QUESTION":
-            newQuestion = [...oldState.question];
-            newQuestion.push({
-                name: action.payload.name
-            });
             return{
                 ...oldState,
-                question: [...newQuestion]
+                question: action.payload.name
+            }
+        case "RESET_STATE":
+            return {
+                options: [],
+                question: ""
+            }
+        case "GET_LATEST_QUESTION":
+            console.log("reducer", action.payload.answers)
+            return {
+                options: action.payload.answers,
+                question: action.payload.label
             }
         default:
             return oldState;
@@ -36,5 +42,4 @@ export const optionReducer = (oldState = INITIAL_STATE, action) => {
 
 export default combineReducers({
     options: optionReducer,
-    question: optionReducer
 });

@@ -2,9 +2,11 @@ import {useEffect} from 'react';
 import Particles from '../node_modules/particlesjs'
 import PreparingPage from './PreparingPage';
 import VotePage from './VotePage';
-import {BrowserRouter, Route} from 'react-router-dom';
+import Results from './Results';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import './Styles/styles.css';
 import './Styles/custom.css';
+
 
 function App() {
 
@@ -44,10 +46,16 @@ function App() {
   return (
     <BrowserRouter>
       <Route path = "/" exact>
-        <PreparingPage />
+        <Redirect to="/vote" />
       </Route>
       <Route path = "/vote">
         <VotePage />
+      </Route>
+      <Route path = "/results">
+        <Results />
+      </Route>
+      <Route path = "/preparing" exact>
+        <PreparingPage />
       </Route>
     </BrowserRouter>
   );
