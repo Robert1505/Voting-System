@@ -18,13 +18,13 @@ function ListOption(props) {
         <div className = "text-center mt-32 font-bold">
             {
                 props.options.map((option, idx) => {
-                    return  <div onMouseEnter={() => {setShow(true)}} onMouseLeave={() => {setShow(false)}} className = "flex flex-col mb-4">
+                    return  <div onMouseEnter={() => {setShow(true)}} onMouseLeave={() => {setShow(false)}} className = "flex flex-col">
                                 <div className = "text-3xl capitalize" key = {`option-${idx}`}> 
                                     {shorten(option.name)}
                                 </div>
                                 {
                                     show === true ? <div>
-                                                        <button className = " px-2 bg-black text-white rounded hover:bg-grey-900 border-2 border-black" onClick = {() => deleteAnswer()}>Delete</button>
+                                                        <button className = "mb-4 px-2 bg-black text-white rounded hover:bg-grey-900 border-2 border-black" onClick = {() => deleteAnswer()}>Delete</button>
                                                     </div>  : ""
                                 }  
                                 
