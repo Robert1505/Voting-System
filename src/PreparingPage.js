@@ -43,10 +43,12 @@ function PreparingPage(props) {
                 </div>
             </div>
             <div className = "text-center absolute inset-x-0 bottom-0 mb-8">
-                <Link to = '/vote'>
-                    <Button className={classes.root}>Vote</Button>
-                </Link>
                 <Button onClick = {() => submitQuestion(props.question, props.options)} className={classes.root}>Submit Question</Button>
+                <div className = "mt-2">
+                    <Link to = '/vote'>
+                        <Button className={classes.root}>Vote</Button>
+                    </Link>
+                </div>
             </div>
         </div>
     )

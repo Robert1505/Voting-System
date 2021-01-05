@@ -35,6 +35,13 @@ export const optionReducer = (oldState = INITIAL_STATE, action) => {
                 options: action.payload.answers,
                 question: action.payload.label
             }
+        case "DELETE_ANSWER":
+            newOptions = [...oldState.options];
+            newOptions = newOptions.filter(option => option.id !== action.payload.id);
+            return{
+                ...oldState,
+                options: [...newOptions]
+            }
         default:
             return oldState;
     }

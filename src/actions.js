@@ -46,3 +46,12 @@ export const submitQuestion = async (label, answers) => {
         label, answers
     })
 } 
+
+export const deleteAnswer = (id) => {
+    return {
+        type: "DELETE_ANSWER",
+        payload: {
+            id
+        }
+    }
+}

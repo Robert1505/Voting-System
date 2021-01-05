@@ -70,7 +70,7 @@ const Chart = (props) => {
       </text>
     );
   };
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#33cc33", "#0066cc", "#cc0099" , "#6600ff", "#3399ff" , "#99ff33"];
   return (
     <div className={classes.chartContainer}>
 
@@ -85,14 +85,9 @@ const Chart = (props) => {
           fill="#8884d8"
           dataKey="value"
         >
-            
-          {data.map((entry, index) => {
-              
-              return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            })}
-          
-            
-         
+          {data.map((entry, index) => {    
+            return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          })}
         </Pie>
       </PieChart>
   
