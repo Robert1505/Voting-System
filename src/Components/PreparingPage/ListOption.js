@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {deleteAnswer} from '../../actions';
 import {connect} from 'react-redux';
 
-function ListOption(props) {
+function ListOption({options, id, deleteAnswer}) {
 
     const [show, setShow] = useState(false);
 
@@ -17,17 +17,14 @@ function ListOption(props) {
     return (
         <div className = "text-center mt-32 font-bold">
             {
-                props.options.map((option, idx) => {
-                    return  <div onMouseEnter={() => {setShow(true)}} onMouseLeave={() => {setShow(false)}} className = "flex flex-col">
+                options.map((option, idx) => {
+                    return  <div onMouseEnter={() => {setShow(true)}} onMouseLeave={() => {setShow(false)}} className = "flex flex-col list-option">
                                 <div className = "text-3xl capitalize" key = {`option-${idx}`}> 
                                     {shorten(option.name)}
                                 </div>
-                                {
-                                    show === true ? <div>
-                                                        <button className = "mb-4 px-2 bg-black text-white rounded hover:bg-grey-900 border-2 border-black" onClick = {() => deleteAnswer()}>Delete</button>
-                                                    </div>  : ""
-                                }  
-                                
+                                <div className = "flex justify-around">
+                                    <button className = "delete-button" onClick = {() => deleteAnswer(id)}>Delete</button>
+                                </div>   
                             </div> 
                 })
             }
