@@ -28,6 +28,7 @@ export const resetState = () => {
 export const getLatestQuestion =  () => async dispatch => {
     
     const { data } = await axios.get("/latest");
+    console.log(data);
     console.log("data from server", data);
     return dispatch({
         type: "GET_LATEST_QUESTION",
@@ -48,6 +49,7 @@ export const submitQuestion = async (label, answers) => {
 } 
 
 export const deleteAnswer = (id) => {
+    console.log("id", id);
     return {
         type: "DELETE_ANSWER",
         payload: {

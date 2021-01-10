@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {deleteAnswer} from '../../actions';
 import {connect} from 'react-redux';
 
 function ListOption({options, id, deleteAnswer}) {
-
-    const [show, setShow] = useState(false);
 
     const shorten = (option) => {
         let length = option.length;
@@ -13,17 +11,16 @@ function ListOption({options, id, deleteAnswer}) {
         return option;
     };
 
-
     return (
         <div className = "text-center mt-32 font-bold">
             {
                 options.map((option, idx) => {
-                    return  <div onMouseEnter={() => {setShow(true)}} onMouseLeave={() => {setShow(false)}} className = "flex flex-col list-option">
+                    return  <div className = "flex flex-col list-option">
                                 <div className = "text-3xl capitalize" key = {`option-${idx}`}> 
                                     {shorten(option.name)}
                                 </div>
                                 <div className = "flex justify-around">
-                                    <button className = "delete-button" onClick = {() => deleteAnswer(id)}>Delete</button>
+                                    <button className = "delete-button" onClick = {() => deleteAnswer(option.id)}>Delete</button>
                                 </div>   
                             </div> 
                 })

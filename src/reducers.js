@@ -32,7 +32,7 @@ export const optionReducer = (oldState = INITIAL_STATE, action) => {
         case "GET_LATEST_QUESTION":
             console.log("reducer", action.payload.answers)
             return {
-                options: action.payload.answers,
+                options: [...action.payload.answers],
                 question: action.payload.label
             }
         case "DELETE_ANSWER":
